@@ -10,7 +10,8 @@ var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  console.log ("--/ je suis la page login")
+  res.render('login', { title: 'Express' });
 });
 
 
@@ -78,5 +79,13 @@ router.get('/result', function(req, res, next) {
 
   res.render('index', { title: 'Express' });
 });
+
+  
+  //Sign in
+  router.post('/sign-in', function(req, res, next) {
+    console.log ("--POST/ je suis la page login")
+    console.log("--POST/sign-in req.body", req.body);
+    res.render('', { title: 'Express' });
+  });
 
 module.exports = router;
