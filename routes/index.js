@@ -15,20 +15,47 @@ router.get('/', function(req, res, next) {
 });
 
 
+/* GET homepage. */
 router.get('/homepage', async function(req, res, next) {
 
-  res.render('homepage', {  });
+  var city = await journeyModel.find();
+
+  res.render('homepage', { city });
 });
 
 
-router.post('/homepage', async function(req, res, next) {
+/* POST homepage. */
+router.post('/tickets', async function(req, res, next) {
 
-  var city = await journeyModel.find({ departure: req.body.departure, arrival: req.body.arrival });
-
+  var city = await journeyModel.find({ departure: req.body.departure, arrival: req.body.arrival  });
   console.log('city',city);
+  console.log('req.body.datetime',req.body.datetime);
+
+  // var empty = city.length;
 
 
-  res.render('homepage', {  });
+  if (city.length > 0) {
+    res.render('tickets', {  });
+  } else {
+    res.redirect('/no-trains')
+  } 
+});
+
+
+/* POST no-trains. */
+router.get('/no-trains', async function(req, res, next) {
+
+  
+  res.render('no-trains', {  });
+});
+
+
+/* GET tickets. */
+router.get('/tickets', async function(req, res, next) {
+
+  
+
+  res.render('tickets', {  });
 });
 
 
