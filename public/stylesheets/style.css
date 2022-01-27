@@ -1,7 +1,10 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(to bottom, #93cede 0%, #1496ba 100%);
+}
+
+.form-container {
+  height: 100vh;
 }
 
 a {
