@@ -14,6 +14,17 @@ router.get('/', function(req, res, next) {
 });
 
 
+router.post('/homepage', async function(req, res, next) {
+
+  var city = await journeyModel.find({ departure: req.body.departure, arrival: req.body.arrival, date: req.body.datetime });
+
+  console.log('city',city);
+
+
+  res.render('homepage', {  });
+});
+
+
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {
 
@@ -37,11 +48,12 @@ router.get('/save', async function(req, res, next) {
       });
        
        await newUser.save();
+       
 
     }
 
   }
-  res.render('index', { title: 'Express' });
+  res.render('homepage', { newUser });
 });
 
 
