@@ -15,9 +15,15 @@ router.get('/', function(req, res, next) {
 });
 
 
+router.get('/homepage', async function(req, res, next) {
+
+  res.render('homepage', {  });
+});
+
+
 router.post('/homepage', async function(req, res, next) {
 
-  var city = await journeyModel.find({ departure: req.body.departure, arrival: req.body.arrival, date: req.body.datetime });
+  var city = await journeyModel.find({ departure: req.body.departure, arrival: req.body.arrival });
 
   console.log('city',city);
 
