@@ -62,9 +62,21 @@ router.get('/no-trains', async function(req, res, next) {
 /* GET tickets. */
 router.get('/my-tickets-trains', async function(req, res, next) {
 
-  req.query.departure
+  var date = new Date(req.query.date);
 
-  res.render('my-tickets-trains', {  });
+  var ticket = [
+    {
+      departure: req.query.departure,
+      arrival: req.query.arrival,
+      date: date,
+      departureTime: req.query.departureTime,
+      price: req.query.price
+    }
+  ]
+
+  console.log('ticket ticket',ticket);
+
+  res.render('my-tickets-trains', { ticket });
 });
 
 /* GET tickets. */
