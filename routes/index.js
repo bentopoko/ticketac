@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var journeyModel = require('../models/journey')
+var journeyModel = require('../models/journey');
+var userModel= require('../models/users');
 
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
@@ -11,6 +12,7 @@ var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log ("--/ je suis la page login")
+  
   res.render('login', { title: 'Express' });
 });
 
@@ -86,12 +88,39 @@ router.get('/result', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+//Sign up
+router.post('/', async function(req, res, next) {
+  console.log ("--POST/sign-up je suis la page login")
+  console.log("--POST/sign-up req.body.username :", req.body.username)
+  console.log("--POST/sign-up req.body.userfirstname :", req.body.userfirstname)
+  console.log("--POST/sign-up req.body.email :", req.body.email)
+  console.log("--POST/sign-up req.body.password :", req.body.password)
+  const user = await userModel.findOne( { email: req.body.email} );
+  console.log("--POST/sign-up user :", user);
+  if(!user){
+  var newUser = userModel({
+    username: req.body.username,
+    userfirstname: req.body.userfirstname,
+    email: req.body.email,
+    password: req.body.password,
+    });
+  }
+  const userSaved=await newUser.save();
+  console.log("--POST/sign-up userSaved :", userSaved);
+  console.log("--POST/sign-up user ap save :", user);
+
+  res.redirect('/homepage');
+});
+
   
   //Sign in
-  router.post('/sign-in', function(req, res, next) {
-    console.log ("--POST/ je suis la page login")
-    console.log("--POST/sign-in req.body", req.body);
-    res.render('', { title: 'Express' });
+  router.post('/', function(req, res, next) {
+    console.log ("--POST/sign-in je suis la page login")
+    console.log("--POST/sign-in req.body.email", req.body.email)
+    console.log("--POST/sign-in req.body.password", req.body.password)
+
+    res.redirect('/homepage');
   });
 
 module.exports = router;
