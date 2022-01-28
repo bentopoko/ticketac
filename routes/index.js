@@ -105,12 +105,15 @@ router.post('/', async function(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     });
-  }
-  const userSaved=await newUser.save();
-  console.log("--POST/sign-up userSaved :", userSaved);
-  console.log("--POST/sign-up user ap save :", user);
+    const userSaved = await newUser.save();
+    console.log("--POST/sign-up userSaved :", userSaved);
+    console.log("--POST/sign-up user ap save :", user);
+    req.session.email =userSaved.email
 
-  res.redirect('/homepage');
+    console.log("--POST/sign-up req.session.email :", req.session.email);
+
+    res.redirect('/homepage');}
+  
 });
 
   
