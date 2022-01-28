@@ -7,6 +7,14 @@ body {
   height: 100vh;
 }
 
+.btn-danger {
+  margin: 15px;
+}
+
+.navbar {
+  padding: 15px;
+}
+
 a {
   color: #00b7ff;
 }

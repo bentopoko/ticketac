@@ -117,14 +117,12 @@ router.get('/result', function(req, res, next) {
 
 
 //Sign up
-router.post('/', async function(req, res, next) {
+router.post('/sign-up', async function(req, res, next) {
   console.log ("--POST/sign-up je suis la page login")
-  console.log("--POST/sign-up req.body.username :", req.body.username)
-  console.log("--POST/sign-up req.body.userfirstname :", req.body.userfirstname)
   console.log("--POST/sign-up req.body.email :", req.body.email)
-  console.log("--POST/sign-up req.body.password :", req.body.password)
   const user = await userModel.findOne( { email: req.body.email} );
   console.log("--POST/sign-up user :", user);
+
   if(!user){
   var newUser = userModel({
     username: req.body.username,
@@ -132,25 +130,37 @@ router.post('/', async function(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     });
+
     const userSaved = await newUser.save();
+
     console.log("--POST/sign-up userSaved :", userSaved);
-    console.log("--POST/sign-up user ap save :", user);
     req.session.email =userSaved.email
-
     console.log("--POST/sign-up req.session.email :", req.session.email);
+    req.session.password =userSaved.password
+    console.log("--POST/sign-up req.session.password :", req.session.password);
 
-    res.redirect('/homepage');}
+    res.redirect('/');}
   
 });
 
   
   //Sign in
-  router.post('/', function(req, res, next) {
+  router.post('/sign-in', async function(req, res, next) {
     console.log ("--POST/sign-in je suis la page login")
-    console.log("--POST/sign-in req.body.email", req.body.email)
-    console.log("--POST/sign-in req.body.password", req.body.password)
+    console.log("--POST/sign-in req.body.email :", req.body.email)
+    console.log("--POST/sign-in req.body.password :", req.body.password)
+    
+    const searchUser= await userModel.findOne({
+      email: req.body.email,
+      password: req.body.password
+    })
+    console.log("--POST/sign-in req.session.email", req.session.email);
+    console.log("--POST/sign-in searchUser", searchUser);
 
-    res.redirect('/homepage');
+    if (searchUser!=null){
+      searchUser.email = req.session.email
+        res.redirect('/homepage')
+    } else {res.redirect ('/')};
   });
 
 module.exports = router;

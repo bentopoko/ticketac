@@ -18,10 +18,10 @@
 
             <!-- HEADER -->
             <nav class=" header navbar navbar-light bg-light ">
-                    <p class="fw-bold">Ticketac</p>
+                    <p class="fw-bold"><img src="/images/train.png" alt="" width="30" height="24" class="d-inline-block align-text-top">Ticketac</p>
                 <div>
-                    <a class="logout fw-bold justify-content-end" href="/users/logout">Connection</a>
-                    <a class="logout fw-bold justify-content-end" href="/users/logout">My last trips</a>
+                    <a class="logout fw-bold justify-content-end link-danger" href="/users/logout">Connection</a>
+                    <a class="logout fw-bold justify-content-end link-dark" href="/users/logout">My last trips</a>
                 </div>
                 
             </nav> 
@@ -39,7 +39,7 @@
                     
                             <h4 class="titleForm text-light">Sign-in</h4>
 
-                            <form action="/" method="POST">
+                            <form action="/sign-in" method="POST">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"></label>
                                     <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
@@ -63,7 +63,7 @@
 
                             <h4 class="titleForm text-light">Sign-up</h4>
 
-                            <form action="/" method="POST">
+                            <form action="/sign-up" method="POST">
                                 <div class="form-group">
                                     <label for="exampleInputUsername"></label>
                                     <input name="username" type="text" class="form-control" placeholder="Name">
