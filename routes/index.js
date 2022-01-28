@@ -37,7 +37,7 @@ router.post('/tickets', async function(req, res, next) {
 
 
   if (city.length > 0) {
-    res.render('tickets', {  });
+    res.render('tickets', { city });
   } else {
     res.redirect('/no-trains')
   } 
@@ -53,11 +53,11 @@ router.get('/no-trains', async function(req, res, next) {
 
 
 /* GET tickets. */
-router.get('/tickets', async function(req, res, next) {
+router.get('/my-tickets-trains', async function(req, res, next) {
 
   
 
-  res.render('tickets', {  });
+  res.render('my-tickets-trains', {  });
 });
 
 
