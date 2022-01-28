@@ -25,14 +25,18 @@
         </div>  
 
         <div class="row">
-            <h4 class="offset-4 titleForm">Tickets available on <%=city.date%> :</h4>
-
+          
+            <div class="tickets">
+              <h4 class="offset-4 titleForm text-light">Tickets available on <%=city.date%> :</h4>
+            </div>
+            
             <div class="offset-4 col-12 col-lg-6">
                 
                 <ul class="list-group">
                     <% for(let i=0; i<city.length;i++){
                         var cityBook = city[i]; %>
                         <div>
+                          <div class="trains">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div>
                                     <p><%=cityBook.departure%>/<%=cityBook.arrival%></p>
@@ -43,6 +47,7 @@
                                 <p><%=cityBook.price%>€</p>
                                 <a href="/my-tickets-trains?departure=<%=cityBook.departure%>&arrival=<%=cityBook.arrival%>&date=<%=cityBook.date%>&departureTime=<%=cityBook.departureTime%>&price=<%=cityBook.price%>" type="submit" class="btn btn-danger mb-2">OK</a>
                             </li>
+                          </div>  
                         </div>
                     <%}%>
                 </ul>
