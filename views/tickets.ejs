@@ -22,31 +22,31 @@
               </div>
             </nav> 
 
-            
-            <div class="container form-container align-items-center d-flex ">
+        </div>  
+
+        <div class="row">
+            <h4 class="offset-4 titleForm">Tickets available on <%=city.date%> :</h4>
+
+            <div class="offset-4 col-12 col-lg-6">
                 
-              <div class="row">
-                <h4 class="offset-4 titleForm">Tickets available on --02/08-- :</h4>
-                <div class="offset-4 col-12 col-lg-6">
-                    
-                    <ul class="list-group">
-                  
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-    
-                            <div>
-    
-                              <img src="">
-                              <span class="badge badge-warning badge-pill"></span>
-                              <span class="badge badge-secondary badge-pill"></span>
-                              <span class="coord"></span>
-                            </div>
-                            <a href="" type="submit" class="btn btn-danger mb-2">OK</a>
-                          </li>
-            
-                    </ul>
-    
-                </div>
-            </div>
+                <ul class="list-group">
+                    <% for(let i=0; i<city.length;i++){
+                        var cityBook = city[i]; %>
+                        <div>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p><%=cityBook.departure%>/<%=cityBook.arrival%></p>
+                                </div>  
+                                <div>
+                                    <p>train departure at : <%=cityBook.departureTime%></p>
+                                </div>
+                                <p><%=cityBook.price%>€</p>
+                                <a href="/my-tickets-trains?departure=<%=cityBook.departure%>&arrival=<%=cityBook.arrival%>&date=<%=cityBook.date%>&departureTime=<%=cityBook.departureTime%>&price=<%=cityBook.price%>" type="submit" class="btn btn-danger mb-2">OK</a>
+                            </li>
+                        </div>
+                    <%}%>
+                </ul>
+
             </div>
           
       
