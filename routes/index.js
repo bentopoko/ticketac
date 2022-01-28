@@ -20,24 +20,31 @@ router.get('/', function(req, res, next) {
 /* GET homepage. */
 router.get('/homepage', async function(req, res, next) {
 
-  var city = await journeyModel.find();
+  req.session.email = req.body.email;
+  req.session.password = req.body.password;
 
-  res.render('homepage', { city });
+  console.log('req.session.email',req.session.email);
+  console.log('req.session.password',req.session.password);
+
+  res.render('homepage', { email: req.session.email, pass: req.session.password });
 });
 
 
 /* POST homepage. */
 router.post('/tickets', async function(req, res, next) {
 
-  var city = await journeyModel.find({ departure: req.body.departure, arrival: req.body.arrival  });
-  console.log('city',city);
-  console.log('req.body.datetime',req.body.datetime);
+  console.log('req.body',req.body)
 
-  // var empty = city.length;
+  var datetime = req.body.datetime;
+  console.log('datetime',datetime);
 
+  var date = new Date(req.body.datetime);
+  console.log('date',date);
+
+  var city = await journeyModel.find({ departure: req.body.departure, arrival: req.body.arrival, date: date });
 
   if (city.length > 0) {
-    res.render('tickets', { city });
+    res.render('tickets', { city, date, datetime });
   } else {
     res.redirect('/no-trains')
   } 
@@ -55,9 +62,16 @@ router.get('/no-trains', async function(req, res, next) {
 /* GET tickets. */
 router.get('/my-tickets-trains', async function(req, res, next) {
 
-  
+  req.query.departure
 
   res.render('my-tickets-trains', {  });
+});
+
+/* GET tickets. */
+router.get('/my-last-trips', async function(req, res, next) {
+
+  
+  res.render('my-last-trips', {  });
 });
 
 
