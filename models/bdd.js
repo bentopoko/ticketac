@@ -1,28 +1,29 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // useNewUrlParser ;)
 var options = {
   connectTimeoutMS: 5000,
   useNewUrlParser: true,
-  useUnifiedTopology: true
- };
+  useUnifiedTopology: true,
+};
 
- var identifiants = {
-   mdp: 'MOT DE PASSE',
-   identifiant: 'IDENTIFIANT',
-   nomCluster: 'CLUSTER'
- }
-
- 
+var identifiants = {
+  mdp: "DeveloperCoolJazzFest33",
+  identifiant: "pokopano",
+  nomCluster: "cluster0.zdnv4",
+};
 
 // --------------------- BDD -----------------------------------------------------
-mongoose.connect(`mongodb+srv://${identifiants.identifiant}:${identifiants.mdp}@${identifiants.nomCluster}.mongodb.net/Ticketac?retryWrites=true`,
-   options,
-   function(err) {
+mongoose.connect(
+  `mongodb+srv://${identifiants.identifiant}:${identifiants.mdp}@${identifiants.nomCluster}.mongodb.net/Ticketac?retryWrites=true`,
+  options,
+  function (err) {
     if (err) {
-      console.log(`error, failed to connect to the database because --> ${err}`);
+      console.log(
+        `error, failed to connect to the database because --> ${err}`
+      );
     } else {
-      console.info('*** Database Ticketac connection : Success ***');
+      console.info("*** Database Ticketac connection : Success ***");
     }
-   }
+  }
 );
