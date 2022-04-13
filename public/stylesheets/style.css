@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
     font-family: sans-serif;
     
@@ -144,3 +145,64 @@ height: 100vh;
 }
 
 
+=======
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    #a7cfdf 0%,
+    #23538a 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 ); /* IE6-9 */
+}
+
+.form-container {
+  height: 100vh;
+}
+
+.confirm {
+  margin: 15px;
+}
+
+.navbar {
+  padding: 15px;
+}
+
+.tickets {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.train {
+  margin: 5px;
+}
+
+.tickets {
+  margin: 20px;
+}
+
+.no-train {
+  margin: 30px;
+}
+
+.one-way {
+  margin: 20px;
+}
+
+a {
+  color: #00b7ff;
+}
+
+.homepage {
+  background-image: url("../images/landmark.png");
+  background-position: center;
+  background-size: 25%;
+  background-repeat: no-repeat;
+}
+
+.table-style {
+  margin: 40px;
+  padding: 15px;
+}
+>>>>>>> 1c77cd5435cd8f86f2f20b07cf396d79bbd28c35

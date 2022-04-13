@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+require('./models/connection')
+
+>>>>>>> 1c77cd5435cd8f86f2f20b07cf396d79bbd28c35
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,6 +11,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+<<<<<<< HEAD
 var models = require('./models/bdd')
 var session = require("express-session");
 var app = express();
@@ -24,6 +30,24 @@ app.use(
   saveUninitialized: false,
   })
  );
+=======
+
+var models = require('./routes/index');
+var session = require("express-session");
+var app = express();
+
+// sessions
+
+app.use(
+session({
+ secret: 'a4f8071f-c873-4447-8ee2',
+ resave: false,
+ saveUninitialized: false,
+})
+);
+
+
+>>>>>>> 1c77cd5435cd8f86f2f20b07cf396d79bbd28c35
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
